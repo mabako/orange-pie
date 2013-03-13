@@ -19,4 +19,4 @@ h1 Users#new
     = f.label :password_confirmation
     = f.password_field :password_confirmation
   .actions
-    = f.submit 'Save'
+    = f.submit 'Sign Up', :disable_with => 'Signing up...'

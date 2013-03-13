@@ -34,4 +34,7 @@ Kitten::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  # pretty html
+  Slim::Engine.default_options[:pretty] = true
 end

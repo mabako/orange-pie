@@ -1,0 +1,23 @@
+doctype 5
+html
+  head
+    title OrangePie Roleplay
+    = stylesheet_link_tag    'application', :media => 'all'
+    = javascript_include_tag 'application'
+    = csrf_meta_tags
+
+  body
+    header
+      h1 OrangePie Roleplay
+      nav
+        ul
+          li Blog
+          li Community
+          li Wiki
+          - if current_user
+            li= link_to current_user.name, current_user
+            li= link_to 'Logout', logout_path, :method => :delete
+          - unless current_user
+            li= link_to 'Login', login_path
+            li= link_to 'Sign up', signup_path
+    = yield
