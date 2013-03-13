@@ -39,3 +39,4 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 
 # Template engine
 gem 'slim', '~> 2.0.0.pre.6'
+gem 'slim-rails'
