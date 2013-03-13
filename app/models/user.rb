@@ -6,4 +6,10 @@ class User < ActiveRecord::Base
   validates :name, :length => { :minimum => 3 }, :uniqueness => { :case_sensitive => false }
   validates :email, :uniqueness => { :case_sensitive => false }, :format => { :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i, :on => :create }
   validates :password, :presence => true, :length => { :minimum => 8 }, :on => :create
+
+  # returns a fancy url for the users; for example "cat" with id 42 would be 
+  # "42-cat", and "Long Long Name" would be "42-long-long-name". i.e. nice urls
+  def to_param
+    "#{id}-#{name.parameterize}"
+  end
 end
