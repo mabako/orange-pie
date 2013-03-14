@@ -12,4 +12,19 @@ class User < ActiveRecord::Base
   def to_param
     "#{id}-#{name.parameterize}"
   end
+
+  # url for avatars: once it is possible for users to upload custom avatars, it should be checked if they have any and just return that url instead
+  private
+  def avatar_url size
+    "https://vanillicon.com/#{Digest::MD5.hexdigest(email)}_#{size}.png"
+  end
+
+  public
+  def avatar_small
+    avatar_url(50)
+  end
+
+  def avatar_large
+    avatar_url(100)
+  end
 end
