@@ -12,6 +12,8 @@ Kitten::Application.routes.draw do
   # user list
   resources :users, :only => [:show]
 
+  resources :blogs, :path => '/blog'
+
   # root
   root :to => 'sessions#new'
 end
