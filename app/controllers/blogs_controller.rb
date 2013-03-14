@@ -1,17 +1,21 @@
 class BlogsController < ApplicationController
   def index
+    authorize! :read, Blog
     @blogs = Blog.all
   end
 
   def show
     @blog = Blog.find(params[:id])
+    authorize! :read, @blog
   end
 
   def new
+    authorize! :create, Blog
     @blog = Blog.new
   end
 
   def create
+    authorize! :create, Blog
     @blog = Blog.new(params[:blog])
     @blog.user = current_user
     logger.info current_user
@@ -24,10 +28,12 @@ class BlogsController < ApplicationController
 
   def edit
     @blog = Blog.find(params[:id])
+    authorize! :update, @blog
   end
 
   def update
     @blog = Blog.find(params[:id])
+    authorize! :update, @blog
 
     respond_to do |format|
       if @blog.update_attributes(params[:blog])
@@ -44,6 +50,7 @@ class BlogsController < ApplicationController
   # DELETE /blogs/1.json
   def destroy
     @blog = Blog.find(params[:id])
+    authorize! :destroy, @blog
     @blog.destroy
 
     respond_to do |format|
