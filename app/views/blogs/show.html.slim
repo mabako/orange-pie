@@ -1,15 +1,6 @@
 p#notice = notice
 
-p
-  strong Title:
-  = @blog.title
-p
-  strong Text:
-  = @blog.text
-p
-  strong User:
-  = @blog.user
+== render :partial => 'show', :locals => { :blog => @blog }
 
-= link_to 'Edit', edit_blog_path(@blog)
 '|
 = link_to 'Back', blogs_path

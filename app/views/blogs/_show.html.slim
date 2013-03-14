@@ -1,0 +1,9 @@
+h2= blog.title
+p
+  = blog.text
+p.author
+  .avatar
+    img src=blog.user.avatar_large
+  .name= blog.user.name
+
+= link_to 'Edit', edit_blog_path(blog)

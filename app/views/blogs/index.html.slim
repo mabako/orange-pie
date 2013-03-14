@@ -1,23 +1,6 @@
-h1 Listing blogs
+h1 Blog
 
-table
-  tr
-    th Title
-    th Text
-    th User
-    th
-    th
-    th
-
-  - @blogs.each do |blog|
-    tr
-      td = blog.title
-      td = blog.text
-      td = blog.user
-      td = link_to 'Show', blog
-      td = link_to 'Edit', edit_blog_path(blog)
-      td = link_to 'Destroy', blog, :confirm => 'Are you sure?', :method => :delete
-
-br
+- @blogs.each do |blog|
+  == render :partial => 'show', :locals => { :blog => blog }
 
 = link_to 'New Blog', new_blog_path
