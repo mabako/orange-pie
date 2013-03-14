@@ -7,17 +7,19 @@ html
     = csrf_meta_tags
 
   body
-    header
-      h1 OrangePie Roleplay
-      nav
-        ul
-          li= link_to 'Blog', blogs_path
-          li Community
-          li Wiki
-          - if current_user
-            li= link_to current_user.name, current_user
-            li= link_to 'Logout', logout_path, :method => :delete
-          - unless current_user
-            li= link_to 'Login', login_path
-            li= link_to 'Sign up', signup_path
-    = yield
+    .frame
+      .tab.left
+        h1.title OrangePie Roleplay
+        - if current_user
+          .me
+            = link_to current_user.name, current_user
+            br
+            = link_to 'Logout', logout_path, :method => :delete
+        - else
+          .guest
+            = link_to 'Login', login_path
+            = link_to 'Sign up', signup_path
+
+      .main
+        .content
+          = yield

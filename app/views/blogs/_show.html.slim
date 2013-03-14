@@ -1,9 +1,9 @@
-h2= blog.title
-p
-  = blog.text
-p.author
-  .avatar
-    img src=blog.user.avatar_large
-  .name= blog.user.name
-
-= link_to 'Edit', edit_blog_path(blog)
+.blog
+  .author
+    .name= blog.user.name
+    .avatar
+      img src=blog.user.avatar_large
+  .post
+    h2= link_to blog.title, blog
+    p
+      = blog.text

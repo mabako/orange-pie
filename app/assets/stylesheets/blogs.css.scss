@@ -1,3 +1,28 @@
 // Place all the styles related to the blogs controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$c: #ffb03b;
+
+.blog {
+  .author {
+    .name {
+      padding: 10px 10px 10px 120px;
+      background-color: $c;
+      font-size: 16px;
+      color: #fdfdfd;
+    }
+    .avatar {
+      margin-top: -30px;
+      margin-left: 8px;
+      img {
+        border: 2px solid #fdfdfd;
+      }
+    }
+  }
+  .post {
+    margin-left: 120px;
+    margin-top: -70px;
+    min-height: 100px;
+  }
+}
