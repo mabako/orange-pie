@@ -39,3 +39,6 @@ gem 'thin'
 
 # Template engine
 gem 'slim-rails'
+
+# permissions and things
+gem 'cancan'
