@@ -3,6 +3,6 @@
     .avatar
       = link_to blog.user do
         img src=blog.user.avatar_large
-    .name= link_to blog.user.name, blog
+    .name= link_to blog.user.name, blog.user
   h2= link_to blog.title, blog
   p = blog.text
