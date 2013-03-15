@@ -8,6 +8,7 @@ class BlogsController < ApplicationController
 
   def show
     authorize! :read, @blog
+    @comment = Comment.new
   end
 
   def new
@@ -48,8 +49,20 @@ class BlogsController < ApplicationController
     redirect_to blogs_url
   end
 
+  def comment
+    authorize! :comment, @blog
+    @comment = Comment.new(params[:comment])
+    @comment.user = current_user
+    @comment.commentable = @blog
+    if @comment.save
+      redirect_to @blog, :anchor => "comment-#{@comment.id}"
+    else
+      render action: 'comment'
+    end
+  end
+
   private
   def load_blog
-    @blog = Blog.find(params[:id])
+    @blog = Blog.find(params[:blog_id] || params[:id])
   end
 end

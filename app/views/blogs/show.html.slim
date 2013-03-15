@@ -5,3 +5,13 @@
 
 .thin.blog
   == render :partial => 'show', :locals => { :blog => @blog, :hide_title => true }
+
+  .comments
+    - if @blog.comments.count > 0
+      h2= pluralize(@blog.comments.count, "Comment")
+      - @blog.comments.each do |comment|
+        == render :partial => 'comment', :locals => { :comment => comment }
+
+    - if can? :comment, @blog
+      h2 Comment
+      == render :partial => 'comment_form'

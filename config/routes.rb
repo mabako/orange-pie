@@ -12,7 +12,10 @@ Kitten::Application.routes.draw do
   # user list
   resources :users, :only => [:show]
 
-  resources :blogs, :path => '/blog'
+  resources :blogs, :path => '/blog' do
+    post :comment
+    match 'comment' => redirect('/blog/%{blog_id}')
+  end
 
   # root
   root :to => 'sessions#new'

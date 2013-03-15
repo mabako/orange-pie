@@ -2,7 +2,7 @@
   .author
     .avatar
       = link_to blog.user do
-        img src=blog.user.avatar_large
+        img src=blog.user.avatar_large title=blog.user.name
     .name= link_to blog.user.name, blog.user
   .pie
     - if can? :edit, blog

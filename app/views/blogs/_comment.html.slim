@@ -1,0 +1,9 @@
+.post.small
+  .author
+    .avatar
+      img src=comment.user.avatar_small title=comment.user.name
+
+  .pie
+    span title=comment.created_at.to_s(:long_ordinal)
+      = timely comment.created_at
+  p = comment.text

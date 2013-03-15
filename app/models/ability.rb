@@ -29,11 +29,10 @@ class Ability
     # See the wiki for details:
     # https://github.com/ryanb/cancan/wiki/Defining-Abilities
 
-    user ||= User.new
-    if user.admin?
-      can :manage, Blog
-    else
-      can :read, Blog
+    can :read, Blog
+    if user
+      can :comment, Blog
+      can :manage, Blog if user.admin?
     end
   end
 end

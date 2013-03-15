@@ -1,0 +1,9 @@
+- content_for :head do
+  .thin
+    .returnto
+      = link_to 'Blog', blogs_path
+      = link_to @blog.title, @blog
+    h1 Comment
+
+.thin.blog
+  == render :partial => 'comment_form'

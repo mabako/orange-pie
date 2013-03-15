@@ -1,0 +1,15 @@
+= form_for @comment, :url => blog_comment_path(@blog) do |f|
+  .post.small
+    .author
+      .avatar
+        img src=current_user.avatar_small title=current_user.name
+
+    - if @comment.errors.any?
+      #error_explanation
+        h2 = "#{pluralize(@comment.errors.count, "error")} prohibited this blog from being saved:"
+        ul
+          - @comment.errors.full_messages.each do |message|
+            li = message
+    .field
+      = f.text_area :text
+    .actions = f.submit 'Add Comment', :disable_with => 'Adding Comment...'
