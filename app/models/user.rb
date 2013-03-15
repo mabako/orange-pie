@@ -16,7 +16,8 @@ class User < ActiveRecord::Base
   # url for avatars: once it is possible for users to upload custom avatars, it should be checked if they have any and just return that url instead
   private
   def avatar_url size
-    "https://vanillicon.com/#{Digest::MD5.hexdigest(email)}_#{size}.png"
+    hash = Digest::MD5.hexdigest(email)
+    "http://www.gravatar.com/avatar/#{hash}?s=#{size}&d=http://vanillicon.com/#{hash}_#{size}.png"
   end
 
   public
