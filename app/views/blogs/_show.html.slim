@@ -1,9 +1,8 @@
-.blog
+.post
   .author
-    .name= blog.user.name
     .avatar
-      img src=blog.user.avatar_large
-  .post
-    h2= link_to blog.title, blog
-    p
-      = blog.text
+      = link_to blog.user do
+        img src=blog.user.avatar_large
+    .name= link_to blog.user.name, blog
+  h2= link_to blog.title, blog
+  p = blog.text

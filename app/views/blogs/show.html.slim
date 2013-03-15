@@ -1,6 +1,2 @@
-p#notice = notice
-
-== render :partial => 'show', :locals => { :blog => @blog }
-
-'|
-= link_to 'Back', blogs_path
+.thin.blog
+  == render :partial => 'show', :locals => { :blog => @blog }

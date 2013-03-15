@@ -15,7 +15,7 @@ body {
   margin: 0px;
   font-family: sans-serif;
   font-size: 14px;
-  line-height: 20px;
+  line-height: 22px;
 }
 
 img {
@@ -27,11 +27,6 @@ header {
   border-bottom: 5px solid $orange;
   .container {
     height: 90px;
-    width: $width;
-    margin: {
-      left: auto;
-      right: auto;
-    }
     h1 {
       margin: 0px;
       float: left;
@@ -92,58 +87,55 @@ header {
     left: auto;
     right: auto;
   }
-}
-
-
-/*
-h1, h2, h3 {
-  @include ubuntu;
-  padding: 0px;
-  margin: 0px;
-}
-
-h1 {
-  line-height: 30px;
-  font-size: 26px;
-}
-
-h2 {
-  line-height: 28px;
-  font-size: 22px;
-}
-
-.frame {
-  width: 1230px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 20px;
-}
-
-.tab.left {
-  padding-top: 30px;
-  width: 230px;
-  float: left;
-  position: fixed;
-  color: $tab-color;
-  a {
-    color: $tab-color;
-    text-decoration: none;
-  }
-}
-
-.main {
-  width: 999px;
-  margin-left: 231px;
-  .content {
-    background: $content-background;
-    padding-left: 30px;
-    padding-right: 30px;
-    h1 {
-      padding-top: 30px;
-    }
-    .menu {
-      padding-bottom: 15px;
+  .thin {
+    width: $width * 0.7;
+    margin: {
+      left: auto;
+      right: auto;
     }
   }
 }
-*/
+
+.post {
+  background: $white;
+  min-height: 150px;
+  padding: {
+    left: 15px;
+    top: 15px;
+    right: 15px;
+    bottom: 2px;
+  }
+  border-left: 5px solid $orange;
+  margin: {
+    top: 30px;
+    left: 110px;
+  }
+  .author {
+    background: $white;
+    padding: 5px;
+    float: left;
+    margin-left: -130px;
+    width: 100px;
+    .name {
+      text-align: center;
+      font-size: 16px;
+      @include nice-font;
+      a {
+        text-decoration: none;
+        color: $black;
+      }
+    }
+  }
+  h2 {
+    font-size: 30px;
+    @include nice-font;
+    margin: {
+      top: 0px;
+      bottom: 15px;
+    }
+    a {
+      text-decoration: none;
+      color: $orange;
+    }
+  }
+}

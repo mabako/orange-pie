@@ -1,8 +1,4 @@
-.menu
-  h1 Blog
-  .links
-    = link_to 'New blog post', new_blog_path
-
-- @blogs.each do |blog|
-  == render :partial => 'show', :locals => { :blog => blog }
+.thin.blog
+  - @blogs.each do |blog|
+    == render :partial => 'show', :locals => { :blog => blog }
 
