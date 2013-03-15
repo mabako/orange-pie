@@ -1,5 +1,8 @@
 class Blog < ActiveRecord::Base
   belongs_to :user
+
+  scope :sorted, order('created_at desc')
+
   attr_accessible :text, :title
 
   validates :title, :presence => true

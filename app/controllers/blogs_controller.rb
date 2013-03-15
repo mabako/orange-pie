@@ -1,7 +1,7 @@
 class BlogsController < ApplicationController
   def index
     authorize! :read, Blog
-    @blogs = Blog.all
+    @blogs = Blog.sorted.all
   end
 
   def show
