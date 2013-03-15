@@ -1,2 +1,7 @@
+- content_for :head do
+  .thin
+    .returnto= link_to 'Blog', blogs_path
+    h1= @blog.title
+
 .thin.blog
-  == render :partial => 'show', :locals => { :blog => @blog }
+  == render :partial => 'show', :locals => { :blog => @blog, :hide_title => true }

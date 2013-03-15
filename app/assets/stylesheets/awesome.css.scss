@@ -96,6 +96,47 @@ header {
   }
 }
 
+.content-header {
+  background: darken($white, 2.5%);
+  border-bottom: 2px solid darken($white, 10%);
+  .container {
+    h1 {
+      margin: 0px;
+      padding: {
+        left: 125px;
+        top: 40px;
+        bottom: 40px;
+      }
+      font-size: 40px;
+      line-height: 48px;
+      @include nice-font;
+    }
+    .returnto + h1 {
+      padding: {
+        top: 0px;
+      }
+    }
+    .returnto {
+      font-size: 20px;
+      padding: {
+        top: 30px;
+        left: 125px;
+      }
+      @include nice-font;
+      a {
+        color: $black;
+        text-decoration: none;
+      }
+      a:after {
+        margin-left: 5px;
+        content: ">";
+        font-weight: bolder;
+        color: darken($white, 30%);
+      }
+    }
+  }
+}
+
 .post {
   background: $white;
   min-height: 150px;
@@ -128,14 +169,30 @@ header {
   }
   h2 {
     font-size: 30px;
+    line-height: 36px;
     @include nice-font;
     margin: {
       top: 0px;
-      bottom: 15px;
+      bottom: 20px;
     }
     a {
       text-decoration: none;
       color: $orange;
+    }
+  }
+  .pie {
+    float: right;
+    color: darken($white, 30%);
+    a {
+      color: darken($white, 30%);
+      text-decoration: none;
+    }
+    a:after {
+      content: "\2022";
+      padding: {
+        left: 5px;
+        right: 5px;
+      }
     }
   }
 }

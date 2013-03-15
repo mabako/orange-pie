@@ -1,3 +1,7 @@
+- content_for :head do
+  .thin
+    h1 Blog
+
 .thin.blog
   - @blogs.each do |blog|
     == render :partial => 'show', :locals => { :blog => blog }
