@@ -57,8 +57,10 @@ header {
         top: 50px;
       }
       color: $black;
+      text-transform: lowercase;
       strong {
         color: $orange;
+        padding-right: 7px;
       }
     }
   }
@@ -298,7 +300,7 @@ h2 {
         display: inline;
         font-size: 16px;
         padding: {
-          right: 10px;
+          right: 5px;
         }
       }
     }

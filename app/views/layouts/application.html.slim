@@ -1,7 +1,7 @@
 doctype 5
 html
   head
-    title OrangePie Roleplay
+    title= "#{t('title1')} #{t('title2')}"
     = stylesheet_link_tag    'application', :media => 'all'
     = javascript_include_tag 'application'
     = csrf_meta_tags
@@ -13,8 +13,8 @@ html
         = link_to root_path do
           h1= image_tag('orange.png')
           h3
-            strong orangepie 
-            | roleplay
+            strong= t('title1')
+            = t('title2')
         nav
           ul
             li= link_to 'Blog', blogs_path, :class => nav_active?('blogs')
@@ -35,4 +35,4 @@ html
           = yield :head
     .container
       = yield
-    footer &copy; #{Time.now.year} OrangePie Roleplay. All Rights reserved.
+    footer &copy; #{Time.now.year} #{t('title1')} #{t('title2')}. All Rights reserved.
