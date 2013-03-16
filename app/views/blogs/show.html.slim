@@ -1,6 +1,10 @@
 - content_for :head do
   .thin
     .returnto= link_to 'Blog', blogs_path
+    - if can?(:edit, @blog) || can?(:delete, @blog)
+      .actions
+        = link_to_if can?(:edit, @blog), 'Edit', edit_blog_path(@blog)
+        = link_to_if can?(:delete, @blog), 'Delete', @blog, :confirm => 'Are you sure?', :method => :delete
     h1= @blog.title
 
 .thin.blog

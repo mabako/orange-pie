@@ -5,8 +5,6 @@
         img src=blog.user.avatar_large title=blog.user.name
     .name= link_to blog.user.name, blog.user
   .pie
-    - if can? :edit, blog
-      span= link_to 'Edit', edit_blog_path(blog)
     span title=blog.created_at.to_s(:long_ordinal)
       = timely blog.created_at
   - unless local_assigns[:hide_title]

@@ -128,21 +128,24 @@ h2 {
       line-height: 48px;
       @include nice-font;
     }
-    .returnto + h1 {
+    .returnto + h1, .returnto + .actions + h1 {
       padding: {
         top: 0px;
       }
     }
-    .returnto {
+    .returnto, .actions {
       font-size: 20px;
-      padding: {
-        top: 30px;
-        left: 125px;
-      }
+      line-height: 22px;
       @include nice-font;
       a {
         color: $black;
         text-decoration: none;
+      }
+    }
+    .returnto {
+      padding: {
+        top: 30px;
+        left: 125px;
       }
       a:after {
         margin: {
@@ -153,6 +156,22 @@ h2 {
         font-weight: bolder;
         color: darken($white, 30%);
       }
+    }
+    .actions {
+      float: right;
+      a {
+        margin-left: 10px;
+      }
+    }
+    .actions {
+       /* same as the h1 */
+      margin-top: 40px;
+      line-height: 48px;
+    }
+    .returnto + .actions {
+      /* same as the line height of .returnto and the original .actions */
+      margin-top: -22px;
+      line-height: 22px;
     }
   }
 }

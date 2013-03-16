@@ -1,5 +1,8 @@
 - content_for :head do
   .thin
+    - if can? :create, Blog
+      .actions
+        = link_to 'New', new_blog_path
     h1 Blog
 
 .thin.blog
