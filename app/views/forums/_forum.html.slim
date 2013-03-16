@@ -1,0 +1,7 @@
+- if forum.category?
+  .category
+    h2= forum.name
+    - forum.children.each do |f|
+      == render :partial => 'forumbit', :locals => { :forum => f }
+- else
+  == render :partial => 'forumbit', :locals => { :forum => forum }

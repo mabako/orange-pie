@@ -17,8 +17,12 @@ Kitten::Application.routes.draw do
 
   resources :blogs, :path => '/blog' do
     post :comment
+
+    # all not-post requests on comments are redirected to the blog post
     match 'comment' => redirect('/blog/%{blog_id}')
   end
+
+  resources :forums, :only => [:index], :path => '/community'
 
   # root
   root :to => 'sessions#new'

@@ -42,3 +42,6 @@ gem 'slim-rails'
 
 # permissions and things
 gem 'cancan'
+
+# nested forums and the likes
+gem 'ancestry'

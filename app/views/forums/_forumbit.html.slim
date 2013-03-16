@@ -1,0 +1,7 @@
+.forumbit
+  .title
+    = link_to forum.name, forum
+    - if forum.has_children?
+      ul
+        - forum.children.each do |f|
+          li= link_to f.name, f

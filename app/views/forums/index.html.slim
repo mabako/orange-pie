@@ -1,0 +1,6 @@
+- content_for :head do
+  h1 Community
+
+.forum
+  - @forums.each do |forum|
+    == render :partial => 'forum', :locals => { :forum => forum }

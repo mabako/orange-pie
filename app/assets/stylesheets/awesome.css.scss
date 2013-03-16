@@ -10,6 +10,9 @@ $width: 1200px;
   font-family: 'Roboto Condensed', sans-serif;
 }
 @mixin underlined-link {
+  a {
+    text-decoration: none;
+  }
   a:hover {
     text-decoration: underline;
   }
@@ -73,7 +76,6 @@ header {
         @include nice-font;
         a {
           color: $black;
-          text-decoration: none;
           padding: 15px;
         }
         a.active {
@@ -127,7 +129,6 @@ h2 {
     h1 {
       margin: 0px;
       padding: {
-        left: 125px;
         top: 40px;
         bottom: 40px;
       }
@@ -180,6 +181,16 @@ h2 {
       /* same as the line height of .returnto and the original .actions */
       margin-top: -22px;
       line-height: 22px;
+    }
+  }
+}
+
+.content-header {
+  .container {
+    .thin {
+      h1 {
+        padding-left: 125px;
+      }
     }
   }
 }
@@ -259,5 +270,46 @@ h2 {
     #new_comment .post {
       margin-top: 20px;
     }
+  }
+}
+
+.forum {
+  .category {
+    .forumbit {
+      margin-top: 5px;
+      border-left: 5px solid darken($white, 10%);
+    }
+    h2 {
+      font-size: 30px;
+      line-height: 36px;
+      margin: {
+        top: 20px;
+        bottom: 20px;
+        left: 10px;
+      }
+    }
+  }
+  .forumbit {
+    background: $white;
+    ul {
+      margin: 0px;
+      padding-left: 10px;
+      li {
+        display: inline;
+        font-size: 16px;
+        padding: {
+          right: 10px;
+        }
+      }
+    }
+  }
+  .category > .title, .forumbit > .title {
+    @include nice-font;
+    font-size: 20px;
+    padding: 5px;
+    a {
+      color: black;
+    }
+    @include underlined-link;
   }
 }
