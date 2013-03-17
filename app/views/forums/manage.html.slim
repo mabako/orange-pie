@@ -10,12 +10,15 @@
 .manageforums
   ol#sortable
     == render :partial => 'manage_forum', :locals => { :forums => @forums }
+  hr
+  = link_to 'New', '#', :class => 'newforum'
   javascript:
     $(document).ready(function(){
       $('#sortable').nestedSortable({
         handle: 'div',
         items: 'li',
-        toleranceElement: '> div'
+        toleranceElement: '> div',
+        expression: /(.+)[_](.+)/
       });
     });
     $('.save').click(function() {
@@ -26,5 +29,19 @@
         type: "POST",
         url: window.location.href + '.json',
         data: data
+      }).done(function() {
+        window.location.reload(true);
       });
     });
+
+    // creates a new pseudo-forum
+    var newforumindex = 0;
+    $('.newforum').click(function() {
+      var name = prompt('Name of the new Forum?')
+      if(name && name.length > 0) {
+        var li = $('<li></li>', {id: 'forum_' + --newforumindex, name: name});
+        $('<div></div>', {text: name}).appendTo(li);
+        li.appendTo('#sortable');
+      }
+    });
+

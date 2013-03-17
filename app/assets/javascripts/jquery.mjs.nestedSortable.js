@@ -285,7 +285,7 @@
       function _recursiveItems(item) {
         var id = ($(item).attr(o.attribute || 'id') || '').match(o.expression || (/(.+)[-=_](.+)/));
         if (id) {
-          var currentItem = {"id" : id[2]};
+          var currentItem = {"id" : id[2], "name": $(item).attr('name')};
           if ($(item).children(o.listType).children(o.items).length > 0) {
             currentItem.children = [];
             $(item).children(o.listType).children(o.items).each(function() {

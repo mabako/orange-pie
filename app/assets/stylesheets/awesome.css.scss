@@ -324,10 +324,12 @@ h2 {
   .category {
     padding-top: 20px;
   }
-  .topics {
-    padding-top: 20px;
+  .category + .topics {
     margin-top: 20px;
     border-top: 5px solid darken($white, 10%);
+  }
+  .topics {
+    padding-top: 20px;
     .topicbit {
       background: $white;
       > .title {
@@ -358,5 +360,18 @@ h2 {
   div.category {
     background: $orange;
     color: $white;
+  }
+}
+
+hr {
+  margin: {
+    top: 20px;
+    bottom: 20px;
+  }
+  border: {
+    top: 5px solid darken($white, 10%);
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
   }
 }

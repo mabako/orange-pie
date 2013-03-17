@@ -19,6 +19,7 @@ class ForumsController < ApplicationController
     authorize! :manage, Forum
     Forum.transaction do
       forums = Forum.all
+      logger.info params[:forums]
 
       # set the new parents
       update_parents params[:forums], forums, nil
@@ -40,8 +41,13 @@ class ForumsController < ApplicationController
   def update_parents updated, forums, parent
     updated.each_with_index do |forum, index|
       info = forum[1]
-      # find the forum with that id
-      to_update = forums.select{ |f| f.id == info[:id].to_i }.first
+      if info[:id].to_i < 0
+        # new forum!
+        to_update = Forum.new({:name => info[:name]})
+      else
+        # find the forum with that id
+        to_update = forums.select{ |f| f.id == info[:id].to_i }.first
+      end
       logger.info to_update
       if to_update
         # save the new parent
