@@ -1,0 +1,6 @@
+- forums.each do |forum|
+  li id="forum_#{forum.id}"
+    div class=(forum.category? ? 'category' : nil) = forum.name
+    - if forum.has_children?
+      ol
+        == render :partial => 'manage_forum', :locals => { :forums => forum.children }

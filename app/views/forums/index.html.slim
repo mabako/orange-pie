@@ -1,6 +1,8 @@
 - content_for :head do
+  - if can? :manage, Forum
+    .actions
+      = link_to 'Manage', manage_forums_path
   h1 Community
-
 .forum
   - @forums.each do |forum|
     == render :partial => 'forum', :locals => { :forum => forum }

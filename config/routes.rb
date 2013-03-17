@@ -23,6 +23,11 @@ Kitten::Application.routes.draw do
   end
 
   resources :forums, :only => [:index, :show], :path => '/community' do
+    collection do
+      get :manage
+      post :managed, :path => 'manage'
+    end
+
     resources :topics, :only => [ :new, :create], :path => '/topic'
     get '/:id' => 'topics#show', :as => 'topic'
   end

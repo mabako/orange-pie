@@ -1,0 +1,30 @@
+- content_for :header do
+  = javascript_include_tag 'jquery.ui'
+  = javascript_include_tag 'jquery.mjs.nestedSortable'
+
+- content_for :head do
+  .actions
+    = link_to 'Save', '#', :class => 'save'
+  h1 Manage Forums
+
+.manageforums
+  ol#sortable
+    == render :partial => 'manage_forum', :locals => { :forums => @forums }
+  javascript:
+    $(document).ready(function(){
+      $('#sortable').nestedSortable({
+        handle: 'div',
+        items: 'li',
+        toleranceElement: '> div'
+      });
+    });
+    $('.save').click(function() {
+      var data = { forums: $('#sortable').nestedSortable('toHierarchy') };
+      console.log(data);
+
+      $.ajax({
+        type: "POST",
+        url: window.location.href + '.json',
+        data: data
+      });
+    });

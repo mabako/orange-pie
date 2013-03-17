@@ -33,7 +33,7 @@ class Ability
     can :read, Forum
     if user
       can :comment, Blog
-      can :manage, Blog if user.admin?
+      can :manage, [Blog, Forum] if user.admin?
       can :create_topic, Forum
     end
   end

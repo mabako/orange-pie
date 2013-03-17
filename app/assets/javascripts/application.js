@@ -12,4 +12,4 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+// Could be =require_tree .
