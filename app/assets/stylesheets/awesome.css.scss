@@ -314,7 +314,7 @@ h2 {
     font-size: 20px;
     padding: 5px;
     a {
-      color: black;
+      color: $black;
     }
     @include underlined-link;
   }
@@ -339,7 +339,7 @@ h2 {
         margin-top: 5px;
         border-left: 5px solid $orange;
         a {
-          color: black;
+          color: $black;
         }
         @include underlined-link;
       }
