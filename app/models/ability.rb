@@ -30,6 +30,7 @@ class Ability
     # https://github.com/ryanb/cancan/wiki/Defining-Abilities
 
     can :read, Blog
+    can :read, Forum
     if user
       can :comment, Blog
       can :manage, Blog if user.admin?
