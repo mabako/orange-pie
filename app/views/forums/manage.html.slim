@@ -23,7 +23,6 @@
     });
     $('.save').click(function() {
       var data = { forums: $('#sortable').nestedSortable('toHierarchy') };
-      console.log(data);
 
       $.ajax({
         type: "POST",
