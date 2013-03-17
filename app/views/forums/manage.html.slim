@@ -28,9 +28,14 @@
         type: "POST",
         url: window.location.href + '.json',
         data: data
-      }).done(function() {
-        window.location.reload(true);
+      }).always(function(e) {
+        if(e.status == 200) {
+          window.location.reload(true)
+        } else {
+          alert('Failed to update forums: ' + e.status + ': ' + e.statusText);
+        }
       });
+      return false;
     });
 
     // creates a new pseudo-forum
@@ -42,5 +47,6 @@
         $('<div></div>', {text: name}).appendTo(li);
         li.appendTo('#sortable');
       }
+      return false;
     });
 

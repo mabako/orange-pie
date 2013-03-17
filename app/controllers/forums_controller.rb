@@ -48,7 +48,7 @@ class ForumsController < ApplicationController
         # find the forum with that id
         to_update = forums.select{ |f| f.id == info[:id].to_i }.first
       end
-      logger.info to_update
+      to_update.sort = index + 1
       if to_update
         # save the new parent
         to_update.parent = parent
