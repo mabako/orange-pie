@@ -1,0 +1,13 @@
+- content_for :head do
+  .returnto
+    = link_to 'Community', forums_path
+    - @forum.path.each do |parent|
+      - unless parent == @forum
+        = link_to parent.name, parent
+  h1= @forum.name
+
+.forum
+  - if @forum.has_children?
+    .category
+      - @forum.children.each do |forum|
+        == render :partial => 'forum', :locals => { :forum => forum }

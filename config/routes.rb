@@ -22,7 +22,7 @@ Kitten::Application.routes.draw do
     match 'comment' => redirect('/blog/%{blog_id}')
   end
 
-  resources :forums, :only => [:index], :path => '/community'
+  resources :forums, :only => [:index, :show], :path => '/community'
 
   # root
   root :to => 'sessions#new'

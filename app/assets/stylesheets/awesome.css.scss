@@ -155,7 +155,6 @@ h2 {
     .returnto {
       padding: {
         top: 30px;
-        left: 125px;
       }
       a:after {
         margin: {
@@ -192,6 +191,11 @@ h2 {
     .thin {
       h1 {
         padding-left: 125px;
+      }
+      .returnto {
+        padding: {
+          left: 125px;
+        }
       }
     }
   }
