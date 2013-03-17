@@ -1,4 +1,5 @@
 class Forum < ActiveRecord::Base
+  has_many :topics
   has_ancestry :orphan_strategy => :restrict
 
   attr_accessible :name

@@ -34,6 +34,7 @@ class Ability
     if user
       can :comment, Blog
       can :manage, Blog if user.admin?
+      can :create_topic, Forum
     end
   end
 end

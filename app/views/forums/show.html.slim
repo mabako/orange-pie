@@ -4,10 +4,17 @@
     - @forum.path.each do |parent|
       - unless parent == @forum
         = link_to parent.name, parent
+  - if can? :create_topic, @forum
+    .actions
+      = link_to 'New Topic', new_forum_topic_path(@forum)
   h1= @forum.name
 
-.forum
+.forum.subforum
   - if @forum.has_children?
     .category
       - @forum.children.each do |forum|
         == render :partial => 'forum', :locals => { :forum => forum }
+
+  .topics
+    - @forum.topics.each do |topic|
+      == render :partial => 'topic', :locals => { :topic => topic }

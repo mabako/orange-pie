@@ -319,3 +319,28 @@ h2 {
     @include underlined-link;
   }
 }
+
+.subforum {
+  .category {
+    padding-top: 20px;
+  }
+  .topics {
+    padding-top: 20px;
+    margin-top: 20px;
+    border-top: 5px solid darken($white, 10%);
+    .topicbit {
+      background: $white;
+      > .title {
+        @include nice-font;
+        font-size: 20px;
+        padding: 5px;
+        margin-top: 5px;
+        border-left: 5px solid $orange;
+        a {
+          color: black;
+        }
+        @include underlined-link;
+      }
+    }
+  }
+}
