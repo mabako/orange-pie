@@ -1,10 +1,14 @@
-h2 Login
-= form_tag login_path do
-  .field
-    = label_tag :name
-    = text_field_tag :name, params[:name]
-  .field
-    = label_tag :password
-    = password_field_tag :password
-  .actions
-    = submit_tag 'Login', :disable_with => 'Logging in...'
+- content_for :head do
+  .login
+    h1 Login
+.login
+  == render 'layouts/flash_messages'
+  = form_tag login_path do
+    .field
+      = label_tag :name
+      = text_field_tag :name, params[:name]
+    .field
+      = label_tag :password
+      = password_field_tag :password
+    .actions
+      = submit_tag 'Login', :disable_with => 'Logging in...', :class => 'do'
