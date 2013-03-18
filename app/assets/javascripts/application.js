@@ -13,3 +13,4 @@
 //= require jquery
 //= require jquery_ujs
 // Could be =require_tree .
+//= require forms
