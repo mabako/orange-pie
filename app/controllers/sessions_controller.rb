@@ -22,6 +22,8 @@ class SessionsController < ApplicationController
 
   # a way for mta to verify a user's login details. requires plain text username & password.
   def auth
+    head :forbidden unless request.remote_ip == "127.0.0.1"
+
     # mta-specific json handling
     if params[:name].nil? and params[:password].nil?
       begin
