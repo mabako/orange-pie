@@ -1,4 +1,5 @@
 $orange: rgb(255, 120, 0);
+$light_orange: rgb(255, 250, 245);
 $black: #000;
 $white: #fff;
 
@@ -54,6 +55,14 @@ input, textarea, .flashes .flash {
   box-shadow: 0 1px 1px rgba(255,255,255,0.75) inset;
 }
 
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px $light_orange inset;
+}
+
+input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0px 1000px $light_orange inset;
+}
+
 textarea {
   padding: {
     top: 5px;
@@ -68,7 +77,7 @@ label {
 
 input:focus, textarea:focus {
   outline: none;
-  box-shadow: 0px 0px 0px 2px rgba(255,120,0,0.2) inset; 
+  box-shadow: 0px 0px 0px 2px rgba($orange, 0.2) inset; 
 }
 
 form {
