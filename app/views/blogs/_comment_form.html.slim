@@ -11,5 +11,6 @@
           - @comment.errors.full_messages.each do |message|
             li = message
     .field
-      = f.text_area :text
+      = f.label :text, 'Comment'
+      = f.text_area :text, :rows => 5
     .actions = f.submit 'Add Comment', :disable_with => 'Adding Comment...'
