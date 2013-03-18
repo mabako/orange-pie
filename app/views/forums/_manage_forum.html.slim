@@ -1,6 +1,9 @@
 - forums.each do |forum|
-  li id="forum_#{forum.id}"
-    div class=(forum.category? ? 'category' : nil) = forum.name
+  li id="forum_#{forum.id}" data-category=forum.category
+    div class=(forum.category? ? 'category' : nil)
+      span.actions
+        = link_to '', '#', :class => 'icon-flag'
+      = forum.name
     - if forum.has_children?
       ol
         == render :partial => 'manage_forum', :locals => { :forums => forum.children }

@@ -283,7 +283,6 @@ h2 {
 .forum {
   .category {
     .forumbit {
-      margin-top: 5px;
       border-left: 5px solid darken($white, 10%);
     }
     h2 {
@@ -297,6 +296,7 @@ h2 {
     }
   }
   .forumbit {
+    margin-top: 5px;
     background: $white;
     ul {
       margin: 0px;
@@ -324,6 +324,9 @@ h2 {
 .subforum {
   .category {
     padding-top: 20px;
+    .category {
+      margin-top: -20px;
+    }
   }
   .category + .topics {
     margin-top: 20px;
@@ -357,10 +360,21 @@ h2 {
     padding: 5px;
     margin-top: 5px;
     border-left: 5px solid $orange;
+    span {
+      float: right;
+      a {
+        color: darken($white, 10%);
+      }
+    }
   }
   div.category {
     background: $orange;
     color: $white;
+    span {
+      a {
+        color: $white;
+      }
+    }
   }
 }
 

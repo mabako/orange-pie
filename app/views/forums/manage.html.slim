@@ -18,12 +18,14 @@
         handle: 'div',
         items: 'li',
         toleranceElement: '> div',
-        expression: /(.+)[_](.+)/
+        expression: /(.+)[_](.+)/,
+        collectAttributes: function(o) {
+          return {name: o.attr('name'), category: o.attr('data-category') ? true : false}
+        }
       });
     });
     $('.save').click(function() {
       var data = { forums: $('#sortable').nestedSortable('toHierarchy') };
-
       $.ajax({
         type: "POST",
         url: window.location.href + '.json',
@@ -50,3 +52,14 @@
       return false;
     });
 
+    $('.icon-flag').click(function() {
+      var div = $(this).parent().parent();
+      var li = div.parent();
+      div.toggleClass('category');
+      if(div.hasClass('category')) {
+        li.attr('data-category', 'data-category');
+      } else {
+        li.attr('data-category', null);
+      }
+      return false;
+    });

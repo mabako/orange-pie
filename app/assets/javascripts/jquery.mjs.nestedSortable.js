@@ -25,7 +25,8 @@
       protectRoot: false,
       rootID: null,
       rtl: false,
-      isAllowed: function(item, parent) { return true; }
+      isAllowed: function(item, parent) { return true; },
+      collectAttributes: function() { return {} }
     },
 
     _create: function() {
@@ -285,7 +286,11 @@
       function _recursiveItems(item) {
         var id = ($(item).attr(o.attribute || 'id') || '').match(o.expression || (/(.+)[-=_](.+)/));
         if (id) {
-          var currentItem = {"id" : id[2], "name": $(item).attr('name')};
+          var currentItem = {"id" : id[2]};
+          var props = o.collectAttributes($(item));
+          for(var prop in props) {
+            currentItem[prop] = props[prop];
+          }
           if ($(item).children(o.listType).children(o.items).length > 0) {
             currentItem.children = [];
             $(item).children(o.listType).children(o.items).each(function() {

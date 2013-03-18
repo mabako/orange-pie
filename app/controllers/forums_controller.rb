@@ -48,12 +48,14 @@ class ForumsController < ApplicationController
         # find the forum with that id
         to_update = forums.select{ |f| f.id == info[:id].to_i }.first
       end
-      to_update.sort = index + 1
       if to_update
+        to_update.sort = index + 1
+        to_update.category = info[:category] == 'true'
+
         # save the new parent
         to_update.parent = parent
         to_update.save!
-        logger.info "  #{to_update.id} #{to_update.parent_id}" 
+        # logger.info "  #{to_update.id} #{to_update.parent_id}" 
         # update all children to have the just-updated forum as parent
         unless info[:children].nil?
           update_parents info[:children], forums, to_update
