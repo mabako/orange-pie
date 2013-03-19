@@ -444,6 +444,9 @@ h2 {
     a {
       color: $black;
     }
+    > a {
+      display: block;
+    }
     @include underlined-link;
   }
 }
