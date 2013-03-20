@@ -1,3 +1,6 @@
 .topicbit
   .title
+    .author
+      = link_to topic.user do
+        img src=topic.user.avatar_small title=topic.user.name
     = link_to topic.title, [@forum, topic]

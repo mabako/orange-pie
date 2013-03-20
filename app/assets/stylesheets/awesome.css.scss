@@ -481,17 +481,29 @@ h2 {
     border-top: 5px solid darken($white, 10%);
   }
   .topics {
-    padding-top: 20px;
+    padding-top: 15px;
     .topicbit {
+      margin-top: 5px;
       background: $white;
+      .author {
+        display: inline;
+        img {
+          width: 32px;
+          height: 32px;
+          margin-left: 5px;
+          margin-top: -5px;
+        }
+      }
       > .title {
+        height: 27px;
         @include nice-font;
         font-size: 20px;
-        padding: 5px;
-        margin-top: 5px;
         border-left: 5px solid $orange;
-        a {
+        padding-top: 5px;
+        > a {
+          vertical-align: top;
           color: $black;
+          padding: 5px;
         }
         @include underlined-link;
       }
