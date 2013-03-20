@@ -58,8 +58,5 @@ module Kitten
 
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
-
-    # custom JSON handling for MTA-specific code
-    config.middleware.insert_before Rack::MethodOverride, MtaJson::Wrapper
   end
 end

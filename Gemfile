@@ -46,4 +46,4 @@ gem 'cancan'
 # nested forums and the likes
 gem 'ancestry'
 
-gem 'mta_json'
+gem 'mta_json', '~> 0.0.2'
