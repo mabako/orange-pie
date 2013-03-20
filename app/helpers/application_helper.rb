@@ -1,6 +1,6 @@
 module ApplicationHelper
-  def nav_active? page
-    'active' if params[:controller] == page
+  def nav_active? *pages
+    'active' if pages.include?(params[:controller])
   end
 
   # returns a fancy string for dates:
