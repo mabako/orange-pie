@@ -25,6 +25,7 @@ Kitten::Application.routes.draw do
   end
 
   resources :forums, :only => [:index, :show], :path => '/community' do
+    get 'page/:page', :on => :member, :action => :show
     collection do
       get :manage
       post :managed, :path => 'manage'

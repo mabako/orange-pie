@@ -7,6 +7,7 @@ class ForumsController < ApplicationController
   def show
     @forum = Forum.find(params[:id])
     authorize! :read, @forum
+    @topics = @forum.topics.sorted.page params[:page]
   end
 
   def manage

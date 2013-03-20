@@ -1,4 +1,7 @@
 class Topic < ActiveRecord::Base
+  # TODO replace with last post time
+  scope :sorted, order('created_at desc')
+
   belongs_to :user
   belongs_to :forum
   has_many :comments, :as => :commentable

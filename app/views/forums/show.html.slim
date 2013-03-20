@@ -10,11 +10,13 @@
   h1= @forum.name
 
 .forum.subforum
-  - if @forum.has_children?
+  / Ignore this if we are on a page other than the first
+  - if not params[:page] and @forum.has_children?
     .category
       - @forum.children.each do |forum|
         == render :partial => 'forum', :locals => { :forum => forum }
 
   .topics
-    - @forum.topics.each do |topic|
+    - @topics.each do |topic|
       == render :partial => 'topic', :locals => { :topic => topic }
+      = paginate @topics

@@ -1,4 +1,6 @@
 class Blog < ActiveRecord::Base
+  paginates_per 3 # blog posts on the /blog page
+
   belongs_to :user
   has_many :comments, :as => :commentable
 
