@@ -1,7 +1,6 @@
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
-require './lib/mta/json_parser'
 
 if defined?(Bundler)
   # If you precompile assets before deploying to production, use this line
@@ -61,6 +60,6 @@ module Kitten
     config.assets.version = '1.0'
 
     # custom JSON handling for MTA-specific code
-    config.middleware.insert_before Rack::MethodOverride, MTA::Json
+    config.middleware.insert_before Rack::MethodOverride, MtaJson::Wrapper
   end
 end
