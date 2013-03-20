@@ -29,7 +29,7 @@ Kitten::Application.routes.draw do
     end
 
     resources :topics, :only => [ :new, :create], :path => '/topic'
-    get '/:id' => 'topics#show', :as => 'topic'
+    get '/:id' => 'topics#show', :as => 'topic', :constraints => { :id => /\d.+/ }
   end
 
   # root

@@ -13,10 +13,21 @@ class TopicsController < ApplicationController
     authorize! :create_topic, @forum
     @topic = @forum.topics.new(params[:topic])
     @topic.user = current_user
-    if @topic.save
-      redirect_to @forum
-    else
-      render action: 'new'
+    Topic.transaction do
+      begin
+        @topic.save!
+        
+        # add a comment
+        comment = @topic.comments.new
+        comment.user = @topic.user
+        comment.text = @topic.text
+        comment.commentable = @topic
+        comment.save!
+
+        redirect_to [@forum, @topic]
+      rescue
+        render action: 'new'
+      end
     end
   end
 
