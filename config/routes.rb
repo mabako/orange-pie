@@ -6,7 +6,7 @@ Kitten::Application.routes.draw do
   delete 'logout' => 'sessions#destroy'
 
   # a way to get some user data for the mta server
-  post 'mta-auth' => 'sessions#auth'
+  post 'auth' => 'sessions#auth'
 
   # allow new people to register
   get 'signup' => 'users#new', :as => :signup

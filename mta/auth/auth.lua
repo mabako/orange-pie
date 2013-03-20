@@ -3,13 +3,13 @@
 
 -- tries to authenticate the user with the given username/password and calls
 -- the function fn() with either the user data if successful, or nil if not
-local url = 'http://localhost:3000/mta-auth.json'
+local url = 'http://localhost:3000/auth.mta'
 function authenticate(username, password, fn)
   callRemote(url,
     function(result)
       fn(result ~= 'ERROR' and result or nil)
     end,
-    username, password
+    { name = username, password = password }
   )
 end
 
@@ -25,7 +25,7 @@ addCommandHandler('auth',
           outputDebugString('  ' .. tostring(k) .. ' = ' .. tostring(v))
         end
       else
-        outputDebugString('No successful login')
+        outputDebugString('No successful login', 2)
       end
     end)
   end
