@@ -46,4 +46,8 @@ gem 'cancan'
 # nested forums and the likes
 gem 'ancestry'
 
+# allows MTA calls to rails
 gem 'mta_json', '~> 0.0.2'
+
+# colorful output
+gem 'win32console', :platforms => :mingw
