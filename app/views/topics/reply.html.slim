@@ -1,0 +1,10 @@
+- content_for :head do
+  .returnto
+    = link_to @topic.forum.name, @topic.forum
+    = link_to @topic.title, [@topic.forum, @topic]
+  h1 Reply
+
+.topic
+  .comments
+    #new_comment
+      == render :partial => 'comment_form', :locals => { :comment => @comment, :topic => @topic, :cancel => true }

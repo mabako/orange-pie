@@ -1,10 +1,6 @@
 class TopicsController < ApplicationController
   before_filter :load_forum
-
-  def show
-    @topic = Topic.find(params[:id])
-    @comments = @topic.comments
-  end
+  before_filter :load_topic, :except => [:new, :create]
 
   def new
     authorize! :create_topic, @forum
@@ -33,9 +29,31 @@ class TopicsController < ApplicationController
     end
   end
 
-  private
-  def load_forum
-    @forum = Forum.find(params[:forum_id])
-    authorize! :read, @forum
+  def show
+    @comments = @topic.comments
+    if can? :comment, @topic
+      @newcomment = Comment.new
+      @newcomment.user = current_user
+    end
   end
+
+  def reply
+    authorize! :comment, @topic
+    @comment = Comment.new(params[:comment])
+    @comment.user = current_user
+    @comment.commentable = @topic
+    if @comment.save
+      redirect_to [@forum, @topic], :anchor => "comment-#{@comment.id}"
+    end
+  end
+
+  private
+    def load_forum
+      @forum = Forum.find(params[:forum_id])
+      authorize! :read, @forum
+    end
+
+    def load_topic
+      @topic =  @forum.topics.find(params[:id])
+    end
 end

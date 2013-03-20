@@ -4,5 +4,11 @@
   h1= @topic.title
 
 .topic
-  - @comments.each do |comment|
-    == render :partial => 'comment', :locals => { :comment => comment }
+  .comments
+    - @comments.each do |comment|
+      == render :partial => 'comment', :locals => { :comment => comment }
+
+    - if can? :comment, @topic
+      h2 Reply
+      #new_comment
+        == render :partial => 'comment_form', :locals => { :comment => @newcomment, :topic => @topic, :cancel => false }

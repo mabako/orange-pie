@@ -33,8 +33,12 @@ img {
   border: 0px;
 }
 
+.floatleft {
+  float: left;
+}
+
 // forms
-input, textarea, .flashes .flash {
+input, textarea, .flashes .flash, .button {
   display: inline-block;
   min-height: 32px;
   min-width: 32px;
@@ -109,7 +113,7 @@ form {
   color: $white;
 }
 
-input[type=submit] {
+input[type=submit], .button {
   width: auto;
   margin: {
     left: 0px;
@@ -137,6 +141,20 @@ input[disabled] {
   cursor: not-allowed;
 }
 
+.button {
+  padding: {
+    top: 5px;
+    bottom: 5px;
+  }
+  min-height: 16px;
+}
+a.button {
+  color: black;
+
+  :hover {
+    text-decoration: none;
+  }
+}
 // inline labels as per http://attardi.org/labels2/#css
 .field label {
   position: absolute;
@@ -393,15 +411,15 @@ h2 {
   }
 }
 
-.blog {
+.blog, .topic {
   .comments {
-    h2 {
+    > h2 {
       margin: {
         left: 125px;
         top: 20px;
       }
     }
-    #new_comment .post {
+    #new_comment.post {
       margin-top: 20px;
     }
   }
