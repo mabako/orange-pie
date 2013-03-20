@@ -4,6 +4,11 @@ class BlogsController < ApplicationController
   def index
     authorize! :read, Blog
     @blogs = Blog.sorted.all
+
+    respond_to do |format|
+      format.html
+      format.json { render :json => @blogs, :only => [:id, :title, :text, :created_at], :include => {:user => {:only => [:id, :name]} } }
+    end
   end
 
   def show

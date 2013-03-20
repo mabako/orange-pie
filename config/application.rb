@@ -61,6 +61,6 @@ module Kitten
     config.assets.version = '1.0'
 
     # custom JSON handling for MTA-specific code
-    config.middleware.use MTA::Json
+    config.middleware.insert_before Rack::MethodOverride, MTA::Json
   end
 end
