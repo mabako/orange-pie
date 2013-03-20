@@ -51,3 +51,6 @@ gem 'mta_json', '~> 0.0.2'
 
 # colorful output
 gem 'win32console', :platforms => :mingw
+
+# pagination
+gem 'kaminari'

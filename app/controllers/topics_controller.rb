@@ -30,7 +30,7 @@ class TopicsController < ApplicationController
   end
 
   def show
-    @comments = @topic.comments
+    @comments = @topic.comments.page params[:page]
     if can? :comment, @topic
       @newcomment = Comment.new
       @newcomment.user = current_user

@@ -550,3 +550,37 @@ hr {
     bottom: 0px;
   }
 }
+
+// pagination
+nav.pagination {
+  text-align: right;
+  padding-top: 20px;
+  span {
+    text-align: center;
+    background: $white;
+    margin-right: 5px;
+    padding: {
+      left: 8px;
+      top: 5px;
+      right: 5px;
+      bottom: 5px;
+    }
+    line-height: 18px;
+    border: 1px solid darken($white, 5%);
+    border-radius: 5px;
+    box-shadow: 0 1px 1px rgba(255,255,255,0.75) inset;
+    a {
+      color: $black;
+    }
+  }
+  span.current {
+    background: $orange;
+    color: $white;
+  }
+}
+
+nav.pagination + .post {
+  padding-top: 5px;
+  margin-top: 20px;
+}
+// pagination end

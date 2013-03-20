@@ -5,8 +5,10 @@
 
 .topic
   .comments
+    = paginate @comments
     - @comments.each do |comment|
       == render :partial => 'comment', :locals => { :comment => comment }
+    = paginate @comments
 
     - if can? :comment, @topic
       h2 Reply
