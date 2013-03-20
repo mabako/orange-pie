@@ -1,2 +1,8 @@
-h1 Topics#show
-p Find me in app/views/topics/show.html.slim
+- content_for :head do
+  .returnto
+    = link_to @topic.forum.name, @topic.forum
+  h1= @topic.title
+
+.topic
+  - @comments.each do |comment|
+    == render :partial => 'comment', :locals => { :comment => comment }

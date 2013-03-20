@@ -2,6 +2,8 @@ class TopicsController < ApplicationController
   before_filter :load_forum
 
   def show
+    @topic = Topic.find(params[:id])
+    @comments = @topic.comments
   end
 
   def new
