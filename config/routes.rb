@@ -17,6 +17,8 @@ Kitten::Application.routes.draw do
 
   resources :blogs, :path => '/blog' do
     post :comment
+    get 'page/:page', :on => :collection, :action => :index
+    get 'page/:page', :on => :member, :action => :show
 
     # all not-post requests on comments are redirected to the blog post
     match 'comment' => redirect('/blog/%{blog_id}')
@@ -29,8 +31,9 @@ Kitten::Application.routes.draw do
     end
 
     resources :topics, :only => [ :new, :create], :path => '/topic'
-    constraints :id => /\d.+/ do
+    constraints :id => /\d[^\/]+/ do
       get '/:id' => 'topics#show', :as => 'topic'
+      get '/:id/page/:page' => 'topics#show'
       post '/:id' => 'topics#reply', :as => 'reply'
     end
   end

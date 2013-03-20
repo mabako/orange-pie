@@ -3,7 +3,7 @@ class BlogsController < ApplicationController
 
   def index
     authorize! :read, Blog
-    @blogs = Blog.sorted.all
+    @blogs = Blog.sorted.page params[:page]
 
     respond_to do |format|
       format.html
@@ -13,6 +13,7 @@ class BlogsController < ApplicationController
 
   def show
     authorize! :read, @blog
+    @comments = @blog.comments.page params[:page]
     @comment = Comment.new
   end
 

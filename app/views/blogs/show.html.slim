@@ -11,10 +11,11 @@
   == render :partial => 'show', :locals => { :blog => @blog, :hide_title => true }
 
   .comments
-    - if @blog.comments.count > 0
+    - if @comments.count > 0
       h2= pluralize(@blog.comments.count, "Comment")
-      - @blog.comments.each do |comment|
+      - @comments.each do |comment|
         == render :partial => 'comment', :locals => { :comment => comment }
+      = paginate @comments
 
     - if can? :comment, @blog
       h2 Comment

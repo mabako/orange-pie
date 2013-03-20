@@ -8,4 +8,4 @@
 .thin.blog
   - @blogs.each do |blog|
     == render :partial => 'show', :locals => { :blog => blog }
-
+  = paginate @blogs
