@@ -8,6 +8,7 @@ class BlogsController < ApplicationController
     respond_to do |format|
       format.html
       format.json { render :json => @blogs, :only => [:id, :title, :text, :created_at], :include => {:user => {:only => [:id, :name]} } }
+      format.rss { render :layout => false }
     end
   end
 

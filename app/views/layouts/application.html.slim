@@ -4,8 +4,9 @@ html
     title= "#{t('title1')} #{t('title2')}"
     = stylesheet_link_tag    'application', :media => 'all'
     = javascript_include_tag 'application'
-    = csrf_meta_tags
+    = auto_discovery_link_tag :rss, blogs_url(:rss), :title => 'Blog'
     link rel='icon' type='image/png' href='/favicon.png'
+    = csrf_meta_tags
     = yield :header
 
   body
