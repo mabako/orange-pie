@@ -57,3 +57,9 @@ gem 'kaminari'
 
 # formatting options
 gem 'creole'
+
+# mostly tests
+group :test do
+  gem 'rspec'
+  gem 'simplecov'
+end
