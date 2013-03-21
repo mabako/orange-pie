@@ -28,11 +28,12 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 
-# Use thin as the app server
-gem 'thin'
+# Unicorn on linux, thin on windows
+gem 'unicorn', :platform => :ruby
+gem 'thin', :platform => :mingw
 
 # Deploy with Capistrano
-# gem 'capistrano'
+gem 'capistrano', :group => :development
 
 # To use debugger
 # gem 'debugger'
@@ -50,7 +51,7 @@ gem 'ancestry'
 gem 'mta_json', '~> 0.0.2'
 
 # colorful output
-gem 'win32console', :platforms => :mingw
+gem 'win32console', :platforms => :mingw, :group => :development
 
 # pagination
 gem 'kaminari'
