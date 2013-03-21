@@ -6,4 +6,6 @@ class Comment < ActiveRecord::Base
   validates :user, :presence => true
   validates :text, :presence => true
   validates :commentable, :presence => true
+
+  has_formatted :text
 end

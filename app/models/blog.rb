@@ -12,6 +12,8 @@ class Blog < ActiveRecord::Base
   validates :text, :presence => true
   validates :user, :presence => true
 
+  has_formatted :text
+
   # nicer urls
   def to_param
     "#{id}-#{title.parameterize}"

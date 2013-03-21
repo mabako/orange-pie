@@ -7,4 +7,5 @@
   .pie
     span title=comment.created_at.to_s(:long_ordinal)
       = timely comment.created_at
-  p = comment.text
+  .ninja
+    == comment.formatted_text

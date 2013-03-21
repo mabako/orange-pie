@@ -9,4 +9,5 @@
       = timely blog.created_at
   - unless local_assigns[:hide_title]
     h2= link_to blog.title, blog
-  p = blog.text
+  .ninja
+    == blog.formatted_text

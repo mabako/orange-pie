@@ -54,3 +54,6 @@ gem 'win32console', :platforms => :mingw
 
 # pagination
 gem 'kaminari'
+
+# formatting options
+gem 'creole'
