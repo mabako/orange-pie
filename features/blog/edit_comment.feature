@@ -6,7 +6,7 @@ Feature: Edit blog comment
       Given I am logged in
       And the blog entry "cakes!" exists
 
-    Scenario: Used edits own blog comment
+    Scenario: User edits own blog comment
       Given a comment by "joe" exists
       When I click "Blog"
       When I click "cakes!"
@@ -15,7 +15,7 @@ Feature: Edit blog comment
       And I press "Save"
       Then I should see a blog comment with "My new updated comment"
 
-    Scenario: Used edits own blog comment
+    Scenario: User edits own blog comment without text
       Given a comment by "joe" exists
       When I click "Blog"
       When I click "cakes!"

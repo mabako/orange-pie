@@ -6,4 +6,4 @@
     h1 Comment
 
 .thin.blog
-  == render :partial => 'comment_form'
+  == render :partial => 'comment_form', :locals => { :comment => @comment, :url => blog_comment_path(@blog), :method => :post }

@@ -25,3 +25,10 @@ Then(/^I should see a blog comment with "(.*?)"$/) do |text|
     page.should have_content text
   end
 end
+
+Then(/^I should see the newest blog comment with "(.*?)"$/) do |text|
+  @lastcomment = Comment.last
+  within("#comment-#{@lastcomment.id} .ninja") do
+    page.should have_content text
+  end
+end
