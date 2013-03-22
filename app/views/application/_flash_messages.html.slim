@@ -1,0 +1,6 @@
+- if flash[:error] or flash[:notice]
+  .flashes
+    - if flash[:error]
+      p.flash.error= flash[:error]
+    - if flash[:notice]
+      p.flash.notice= flash[:notice]

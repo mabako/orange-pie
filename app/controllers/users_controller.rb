@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user], :as => :create)
     if @user.save
-      redirect_to root_url
+      redirect_to @user, :notice => 'Welcome aboard!'
     else
       render 'new'
     end

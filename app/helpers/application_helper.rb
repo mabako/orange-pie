@@ -1,6 +1,6 @@
 module ApplicationHelper
   def nav_active? *pages
-    'active' if pages.include?(params[:controller])
+    'active' if pages.include?(params[:controller]) || pages.include?("#{params[:controller]}##{params[:action]}")
   end
 
   # returns a fancy string for dates:
