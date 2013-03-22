@@ -11,6 +11,11 @@ def create_user
   @user = FactoryGirl.create(:user, @visitor)
 end
 
+def delete_user
+  @user ||= User.where(:email => @visitor[:email]).first
+  @user.destroy unless @user.nil?
+end
+
 def sign_up
   visit '/signup'
   fill_in 'user_name', :with => @visitor[:name]
@@ -66,4 +71,35 @@ end
 
 Then(/^I should not see a blank message$/) do
   page.should_not have_content 'blank'
+end
+
+Given(/^I do not exist as user$/) do
+  create_visitor
+  delete_user
+end
+
+Given(/^I do exist as user$/) do
+  create_user
+end
+
+When(/^I go to the log in page$/) do
+  visit '/login'
+end
+
+Then(/^I should see an invalid login message$/) do
+  page.should have_content 'Could not log you in'
+end
+
+Then(/^I should see a successful login message$/) do
+  page.should have_content 'Hi there'
+end
+
+Then(/^I should be logged out$/) do
+  page.should have_content 'Login'
+  page.should_not have_content 'Logout'
+end
+
+Then(/^I should be logged in$/) do
+  page.should_not have_content 'Login'
+  page.should have_content 'Logout'
 end
