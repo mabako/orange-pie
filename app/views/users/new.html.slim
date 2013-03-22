@@ -6,10 +6,11 @@
   = form_for @user, :url => signup_path, :html => { :autocomplete => 'off' } do |f|
       - if @user.errors.any?
         #error_explanation
-          h2= "#{pluralize(@user.errors.count, "error")} prohibited this user from being saved:"
+          h2= "#{pluralize(@user.errors.count - @user.errors[:password_digest].size, "error")} prohibited this user from being saved:"
           ul
-          - @user.errors.full_messages.each do |message|
-            li= message
+            - @user.errors.full_messages.each do |message|
+              - unless message.starts_with?('Password digest')
+                li= message
       .field
         = f.label :name
         = f.text_field :name, :size => 16, :maxlength => 16
