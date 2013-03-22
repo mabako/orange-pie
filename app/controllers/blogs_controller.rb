@@ -1,5 +1,6 @@
 class BlogsController < ApplicationController
   before_filter :load_blog, :except => [:index, :new, :create]
+  before_filter :load_comment, :only => [:edit_comment, :update_comment]
 
   def index
     authorize! :read, Blog
@@ -68,8 +69,26 @@ class BlogsController < ApplicationController
     end
   end
 
-  private
-  def load_blog
-    @blog = Blog.find(params[:blog_id] || params[:id])
+  def edit_comment
+    authorize! :update, @comment
   end
+
+  def update_comment
+    authorize! :update, @comment
+
+    if @comment.update_attributes(params[:comment])
+      redirect_to @blog, notice: 'Comment was successfully updated.'
+    else
+      render action: "edit_comment"
+    end
+  end
+
+  private
+    def load_blog
+      @blog = Blog.find(params[:blog_id] || params[:id])
+    end
+    
+    def load_comment
+      @comment = @blog.comments.find(params[:comment_id])
+    end
 end

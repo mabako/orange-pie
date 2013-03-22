@@ -1,16 +1,16 @@
-= form_for @comment, :url => blog_comment_path(@blog) do |f|
+= form_for comment, :url => url, :method => method do |f|
   .post.small
     .author
       .avatar
         img src=current_user.avatar_small title=current_user.name
 
-    - if @comment.errors.any?
+    - if comment.errors.any?
       #error_explanation
-        h2 = "#{pluralize(@comment.errors.count, "error")} prohibited this comment from being saved:"
+        h2 = "#{pluralize(comment.errors.count, "error")} prohibited this comment from being saved:"
         ul
-          - @comment.errors.full_messages.each do |message|
+          - comment.errors.full_messages.each do |message|
             li = message
     .field
       = f.label :text, 'Comment'
       = f.text_area :text, :rows => 5
-    .actions = f.submit 'Add Comment', :disable_with => 'Adding Comment...', :class => 'do'
+    .actions = f.submit method == :put ? 'Save' : 'Add Comment', :disable_with => method == :put ? 'Saving...' : 'Adding Comment...', :class => 'do'

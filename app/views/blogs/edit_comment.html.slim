@@ -1,0 +1,10 @@
+- content_for :head do
+  .thin
+    .returnto
+      = link_to 'Blog', blogs_path
+      = link_to @blog.title, @blog
+    h1 'Edit Comment'
+
+.thin.blog
+  .comments
+    == render :partial => 'comment_form', :locals => { :comment => @comment, :url => blog_edit_comment_path(@blog, @comment), :method => :put }

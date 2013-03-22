@@ -26,6 +26,16 @@ def sign_up
   find_user
 end
 
+Given(/^I am logged in/) do
+  create_user
+  visit '/login'
+  fill_in 'name', :with => @visitor[:name]
+  fill_in 'password', :with => @visitor[:password]
+  click_button 'Login'
+  page.should_not have_content 'Login'
+  page.should have_content 'Logout'
+end
+
 Given(/^I am not logged in$/) do
   page.driver.delete('/logout')
 end

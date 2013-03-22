@@ -1,10 +1,12 @@
-.post.small
+.post.small id="comment-#{comment.id}"
   .author
     .avatar
       = link_to comment.user do
         img src=comment.user.avatar_small title=comment.user.name
 
   .pie
+    - if can? :edit, comment
+      = link_to 'Edit', blog_edit_comment_path(@blog, comment)
     span title=comment.created_at.to_s(:long_ordinal)
       = timely comment.created_at
   .ninja

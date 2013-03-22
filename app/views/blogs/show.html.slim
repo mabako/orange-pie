@@ -19,4 +19,4 @@
 
     - if can? :comment, @blog
       h2 Comment
-      == render :partial => 'comment_form'
+      == render :partial => 'comment_form', :locals => { :comment => @comment, :url => blog_comment_path(@blog), :method => :post }

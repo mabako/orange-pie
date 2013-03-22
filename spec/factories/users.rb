@@ -5,4 +5,12 @@ FactoryGirl.define do
     password 'changeme'
     password_confirmation 'changeme'
   end
+
+  factory :admin, :class => :user do
+    name 'mabako'
+    email 'mabako@example.com'
+    password 'yeahright'
+    password_confirmation 'yeahright'
+    admin 1
+  end
 end
