@@ -12,22 +12,22 @@ Feature: Sign Up
 
     Scenario: User signs up without a name
       When I sign up without a name
-      Then the Name field should have the is too short error
+      Then the "Name" field should have the "is too short" error
 
     Scenario: User signs up with a too short name
       When I sign up with a too short name
-      Then the Name field should have the is too short error
+      Then the "Name" field should have the "is too short" error
 
     Scenario: User signs up with an invalid email
       When I sign up with an invalid email
-      Then the Email field should have the is invalid error
+      Then the "Email" field should have the "is invalid" error
 
     Scenario: User signs up with an alreay taken name
       Given a user with the same name exists
       When I sign up with valid user data
-      Then the Name field should have the has already been taken error
+      Then the "Name" field should have the "has already been taken" error
 
     Scenario: User signs up without filling the password field in
       When I sign up without filling the password field
-      Then the Password field should have the is too short error
+      Then the "Password" field should have the "is too short" error
       And I should not see a blank message

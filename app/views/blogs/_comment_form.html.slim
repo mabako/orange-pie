@@ -8,8 +8,8 @@
       #error_explanation
         h2 = "#{pluralize(comment.errors.count, "error")} prohibited this comment from being saved:"
         ul
-          - comment.errors.full_messages.each do |message|
-            li = message
+          - comment.errors.each do |field, message|
+            li= comment.errors.full_message(field == :text ? :comment : field, message)
     .field
       = f.label :text, 'Comment'
       = f.text_area :text, :rows => 5
