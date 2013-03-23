@@ -1,4 +1,4 @@
-﻿Feature: s
+﻿Feature: blog post pagination
   In order to see more than just the default three blog posts
   As a visitor
   I want to be able to switch between blog pages
