@@ -17,8 +17,10 @@ Kitten::Application.routes.draw do
 
   resources :blogs, :path => '/blog' do
     post :comment
-    get ':comment_id' => 'blogs#edit_comment', :as => 'edit_comment'
-    put ':comment_id' => 'blogs#update_comment'
+    constraints :comment_id => /[\d]+/ do
+      get ':comment_id' => 'blogs#edit_comment', :as => 'edit_comment'
+      put ':comment_id' => 'blogs#update_comment'
+    end
 
     get 'page/:page', :on => :collection, :action => :index
     get 'page/:page', :on => :member, :action => :show

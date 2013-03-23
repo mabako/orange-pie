@@ -37,9 +37,9 @@ Given(/^I am logged in$/) do
 end
 
 Given(/^I am logged in as admin$/) do
-  @user = FactoryGirl.create(:admin, { :password => 'thispassword', :password_confirmation => 'thispassword' })
+  @admin ||= FactoryGirl.create(:admin, { :password => 'thispassword', :password_confirmation => 'thispassword' })
   visit '/login'
-  fill_in 'name', :with => @user[:name]
+  fill_in 'name', :with => @admin[:name]
   fill_in 'password', :with => 'thispassword'
   click_button 'Login'
   page.should_not have_content 'Login'
