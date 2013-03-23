@@ -87,7 +87,7 @@ class BlogsController < ApplicationController
     def load_blog
       @blog = Blog.find(params[:blog_id] || params[:id])
     end
-    
+
     def load_comment
       @comment = @blog.comments.find(params[:comment_id])
     end

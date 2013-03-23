@@ -14,7 +14,7 @@ class TopicsController < ApplicationController
     Topic.transaction do
       begin
         @topic.save!
-        
+
         # add a comment
         comment = @topic.comments.new
         comment.user = @topic.user

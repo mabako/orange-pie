@@ -5,7 +5,7 @@ class << ActiveRecord::Base
   def has_formatted *attributes
     attributes.each do |attribute|
       name = attribute.to_sym
-      
+
       attr_proc = lambda do
         # retrieve the original text
         text = self.send(name)

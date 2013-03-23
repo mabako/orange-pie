@@ -56,7 +56,7 @@ class ForumsController < ApplicationController
         # save the new parent
         to_update.parent = parent
         to_update.save!
-        # logger.info "  #{to_update.id} #{to_update.parent_id}" 
+
         # update all children to have the just-updated forum as parent
         unless info[:children].nil?
           update_parents info[:children], forums, to_update

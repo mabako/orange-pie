@@ -11,7 +11,7 @@ Kitten::Application.routes.draw do
   # allow new people to register
   get 'signup' => 'users#new', :as => :signup
   post 'signup' => 'users#create'
-  
+
   # user list
   resources :users, :only => [:show]
 
