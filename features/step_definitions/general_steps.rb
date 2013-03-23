@@ -1,4 +1,3 @@
-
 When(/^I press "(.*?)"$/) do |button_name|
   click_button button_name
 end
@@ -15,4 +14,12 @@ end
 
 Then(/^I should see "(.*?)"$/) do |text|
   page.should have_content text
+end
+
+Then(/^I should not see "(.*?)"$/) do |text|
+  page.should_not have_content text
+end
+
+Then(/^debug page$/) do
+  save_and_open_page
 end

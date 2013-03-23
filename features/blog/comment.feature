@@ -7,7 +7,7 @@ Feature: Edit blog comment
       And the blog entry "cakes!" exists
 
     Scenario: User adds new comment
-      When I click "Blog"
+      When I visit the blog
       When I click "cakes!"
       And I fill in "Comment" with "Hey ho"
       And I press "Add Comment"
@@ -15,7 +15,7 @@ Feature: Edit blog comment
 
     Scenario: User adds new comment without text
       Given a comment by "joe" exists
-      When I click "Blog"
+      When I visit the blog
       When I click "cakes!"
       And I fill in "Comment" with ""
       And I press "Add Comment"

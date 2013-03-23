@@ -15,7 +15,7 @@ Kitten::Application.routes.draw do
   # user list
   resources :users, :only => [:show]
 
-  resources :blogs, :path => '/blog' do
+  resources :blogs, :path => '/blog', :constraints => { :blog_id => /\d[^\/]+/ } do
     post :comment
     constraints :comment_id => /[\d]+/ do
       get ':comment_id' => 'blogs#edit_comment', :as => 'edit_comment'

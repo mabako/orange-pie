@@ -4,7 +4,7 @@ Feature: Add new blog entry
 
     Background:
       Given I am logged in as admin
-      When I click "Blog"
+      When I visit the blog
       And I click "New"
 
     Scenario: Add new blog entry

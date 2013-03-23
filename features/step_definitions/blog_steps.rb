@@ -1,6 +1,16 @@
+When(/^I visit the blog$/) do
+  visit '/blog'
+end
+
 Given(/^the blog entry "(.*?)" exists$/) do |title|
   @admin ||= FactoryGirl.create(:admin)
   @blog ||= FactoryGirl.create(:blog, {:title => title, :user => @admin})
+  if @blog.title != title
+    @blog = Blog.find_by_title(title)
+    if @blog.nil?
+      @blog = FactoryGirl.create(:blog, {:title => title, :user => @admin})
+    end
+  end
 end
 
 Given(/^a comment by "(.*?)" exists/) do |name|

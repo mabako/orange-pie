@@ -5,7 +5,7 @@ Feature: Add new blog entry
     Background:
       Given I am logged in as admin
       And the blog entry "orangey" exists
-      When I click "Blog"
+      And I visit the blog
       And I click "orangey"
       And I click "Edit"
 
