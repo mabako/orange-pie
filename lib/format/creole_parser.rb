@@ -16,8 +16,6 @@ module Format
     def make_emoticon image, alt
       '<img src="' << escape_html("/emoticons/#{image}.png") << '" alt="' << escape_html(alt) << '" title="' << escape_html(alt) << '"/>'
     end
-    
-    alias :super_parse_inline_tag :parse_inline_tag
 
     def parse_inline_tag str
       # original
@@ -78,9 +76,50 @@ module Format
         @out << make_emoticon('winking_grinning', $&)
       when /\A\;P/ # ;P
         @out << make_emoticon('winking_tongue_out', $&)
+
+
+      when /\A([:alpha:]|[:digit:])+/
+        @out << $&
+      when /\A\s+/
+        @out << ' ' if @out[-1] != ?\s
+      when /\A\*\*/
+        toggle_tag 'strong', $&
+      when /\A\/\//
+        toggle_tag 'em', $&
+      when /\A\\\\/
+        @out << '<br/>'
       else
-        super_parse_inline_tag str
+        if @extensions
+          case str
+          when /\A__/
+            toggle_tag 'u', $&
+          when /\A\-\-/
+            toggle_tag 'del', $&
+          when /\A\+\+/
+            toggle_tag 'ins', $&
+          when /\A\^\^/
+            toggle_tag 'sup', $&
+          when /\A\~\~/
+            toggle_tag 'sub', $&
+          when /\A\(R\)/i
+            @out << '&#174;'
+          when /\A\(C\)/i
+            @out << '&#169;'
+          when /\A~([^\s])/
+            @out << escape_html($1)
+          when /./
+            @out << escape_html($&)
+          end
+        else
+          case str
+          when /\A~([^\s])/
+            @out << escape_html($1)
+          when /./
+            @out << escape_html($&)
+          end
+        end
       end
+      return $'
     end
   end
 end
