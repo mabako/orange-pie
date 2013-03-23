@@ -1,5 +1,3 @@
-require 'creole'
-
 class << ActiveRecord::Base
   # To use any of this, add a 'has_formatted :attributename' to the desired class.
   def has_formatted *attributes
@@ -20,12 +18,7 @@ class << ActiveRecord::Base
         #   [[Blog:id]]
         # Likewise [[Character:...|Alternative Name]] should work
 
-        # It may be semantically desirable to have the headings replaced with
-        # lower headings, i.e.
-        #   = -> h2 instead of h1
-        #   == -> h3 instead of h2
-        #   === -> h4 instead of h3
-        Creole.creolize(text, :allowed_schemes => %w(http https))
+        Format::CreoleParser.new(text, :allowed_schemes => %w(http https)).to_html
       end
 
       # Creates a method of whatever options we got, prefixing it with formatted_
